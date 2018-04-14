@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ViewAnimator;
 
 public class WordActivity extends AppCompatActivity {
-    
+
     ViewAnimator viewAnimator;
 
     @Override

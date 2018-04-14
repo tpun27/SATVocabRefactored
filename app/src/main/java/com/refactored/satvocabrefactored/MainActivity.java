@@ -1,7 +1,10 @@
 package com.refactored.satvocabrefactored;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loadWords();
+
+        Button startAppButton = (Button) findViewById(R.id.startAppButton);
+        startAppButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), WordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public String loadJSONData() {

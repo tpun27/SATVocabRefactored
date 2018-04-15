@@ -12,12 +12,18 @@ import java.util.Random;
 public class WordActivity extends AppCompatActivity implements WordFragment.WordInterface, DefinitionFragment.DefinitionInterface {
 
     ViewAnimator viewAnimator;
+    Random rand = new Random();
+    int totalWords = 1000;
     Word currentWord = new Word();
+    int currentWordIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_layout);
+
+        currentWordIndex = rand.nextInt(totalWords);
+        currentWord = AppDatabase.getAppDatabase(this).wordDao().getWord(currentWordIndex);
 
         WordFragment wordFragment = new WordFragment();
 
@@ -40,7 +46,14 @@ public class WordActivity extends AppCompatActivity implements WordFragment.Word
     }
 
     public void getWordFromDB() {
+        currentWordIndex = rand.nextInt(totalWords);
+        currentWord = AppDatabase.getAppDatabase(this).wordDao().getWord(currentWordIndex);
 
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.wordNameContainer, new WordFragment());
+        ft.replace(R.id.wordDefContainer, new DefinitionFragment());
+        ft.commit();
     }
 
     public String getWordName() {

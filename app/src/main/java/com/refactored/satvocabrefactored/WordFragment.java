@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class WordFragment extends Fragment{
@@ -33,6 +34,13 @@ public class WordFragment extends Fragment{
         TextView wordTextView = (TextView) wordView.findViewById(R.id.wordTextView);
         wordTextView.setText(mCallback.getWordName());
 
+        Button wordChangeButton = (Button) wordView.findViewById(R.id.wordChangeButton);
+        wordChangeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallback.getWordFromDB();
+            }
+        });
         return wordView;
     }
 }

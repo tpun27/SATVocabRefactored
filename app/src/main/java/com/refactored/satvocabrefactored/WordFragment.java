@@ -9,6 +9,13 @@ import android.widget.TextView;
 
 public class WordFragment extends Fragment{
 
+    WordInterface mCallback;
+
+    public interface WordInterface {
+        void getWordFromDB();
+        String getWordName();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View wordView = inflater.inflate(R.layout.word_fragment, container, false);

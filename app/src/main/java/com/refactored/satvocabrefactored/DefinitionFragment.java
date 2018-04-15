@@ -9,6 +9,12 @@ import android.widget.TextView;
 
 public class DefinitionFragment extends Fragment {
 
+    DefinitionInterface mCallback;
+
+    public interface DefinitionInterface {
+        String getDefinition();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View defView = inflater.inflate(R.layout.definition_fragment, container, false);

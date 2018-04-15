@@ -7,9 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ViewAnimator;
 
-public class WordActivity extends AppCompatActivity {
+import java.util.Random;
+
+public class WordActivity extends AppCompatActivity implements WordFragment.WordInterface, DefinitionFragment.DefinitionInterface {
 
     ViewAnimator viewAnimator;
+    Word currentWord = new Word();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +37,17 @@ public class WordActivity extends AppCompatActivity {
                 AnimationFactory.flipTransition(viewAnimator, AnimationFactory.FlipDirection.LEFT_RIGHT, 50);
             }
         });
+    }
+
+    public void getWordFromDB() {
+
+    }
+
+    public String getWordName() {
+        return currentWord.getWordName();
+    }
+
+    public String getDefinition() {
+        return currentWord.getWordDefinition();
     }
 }

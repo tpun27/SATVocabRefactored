@@ -17,13 +17,16 @@ public class MainActivity extends AppCompatActivity {
 
     private String fileName = "majortests_words.json";
     private JSONArray wordBankAry;
+    String DB_NAME = "word-database";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        deleteDatabase(DB_NAME);
         loadWords();
+        DatabaseInitializer.populateAsync(AppDatabase.getAppDatabase(this), wordBankAry);
 
         Button startAppButton = (Button) findViewById(R.id.startAppButton);
         startAppButton.setOnClickListener(new View.OnClickListener() {
